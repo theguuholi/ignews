@@ -2,6 +2,8 @@ import type { AppProps } from 'next/app'
 
 import { Roboto } from 'next/font/google'
 
+import "../styles/global.scss"
+
 const roboto = Roboto({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
