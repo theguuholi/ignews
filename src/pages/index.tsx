@@ -6,6 +6,8 @@ import styles from "./home.module.scss";
 
 // client-side, server-side, static-side-generation
 // post blog > ssg, comentarios client-side
+// FaunaDB - HTTP
+// Postgres, MongoDb - conexao
 interface HomeProps {
   product: {
     priceId: string;
