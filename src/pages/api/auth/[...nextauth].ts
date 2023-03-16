@@ -15,22 +15,27 @@ export const authOptions = {
   // jwt: {
   //   signingKey: process.env.SIGNIN_KEY
   // },
+  secret: process.env.SIGNIN_KEY,
   callbacks: {
-    async signIn(user, account, profile) {
+    async signIn({ user, account, profile }) {
       const { email } = user;
+      console.log(email)
 
       try {
-        await fauna.query(
+         await fauna.query(
           q.If(
             q.Not(
               q.Exists(
                 q.Match(q.Index("users_by_email"), q.Casefold(user.email))
               )
             ),
-            q.Create("users", { data: { email } }),
+            q.Create("users", { data: { email} }),
             q.Get(q.Match(q.Index("users_by_email"), q.Casefold(user.email)))
           )
-        );
+        )
+
+        
+        ;
         return true;
       } catch {
         return false;
