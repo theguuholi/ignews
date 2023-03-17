@@ -12,29 +12,29 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-  // jwt: {
-  //   signingKey: process.env.SIGNIN_KEY
-  // },
+  jwt: {
+    signingKey: process.env.SIGNIN_KEY,
+  },
   secret: process.env.SIGNIN_KEY,
   callbacks: {
     async signIn({ user, account, profile }) {
       const { email } = user;
-      
+
       try {
-         await fauna.query(
+        console.log("here!")
+        const r = await fauna.query(
           q.If(
             q.Not(
               q.Exists(
                 q.Match(q.Index("users_by_email"), q.Casefold(user.email))
               )
             ),
-            q.Create("users", { data: { email} }),
+            q.Create("users", { data: { email } }),
             q.Get(q.Match(q.Index("users_by_email"), q.Casefold(user.email)))
           )
-        )
+        );
+        console.log(r);
 
-        
-        ;
         return true;
       } catch {
         return false;
