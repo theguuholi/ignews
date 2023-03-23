@@ -3,12 +3,8 @@ import { getStripeJs } from "@/src/services/stripe-js";
 import { signIn, useSession } from "next-auth/react";
 import styles from "./styles.module.scss";
 
-interface SubscribeButtonProps{
-    priceId: string
-}
-
 // lugares seguros getServerSideProps (SSR), getStatisProps(SSSG) API ROUTEs
-export function SubscribeButton({priceId} : SubscribeButtonProps) {
+export function SubscribeButton() {
     const session = useSession()
 
     async function handleSubscribe(){
