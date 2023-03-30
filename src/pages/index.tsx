@@ -3,6 +3,8 @@ import Head from "next/head";
 import { SubscribeButton } from "../componens/SubscribeButton";
 import { stripe } from "../services/stripe";
 import styles from "./home.module.scss";
+import Image from "next/image";
+
 
 // client-side, server-side, static-side-generation
 // post blog > ssg, comentarios client-side
@@ -33,7 +35,7 @@ export default function Home({product} : HomeProps) {
           <SubscribeButton />
         </section>
 
-        <img src="/images/avatar.svg" alt="Girl Coding" />
+        <Image src="/images/avatar.svg" alt="Girl Coding" />
       </main>
     </>
   )
