@@ -30,6 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         email: session.user.email,
       });
 
+      console.log(stripeCustomer)
       await fauna.query(
         q.Update(q.Ref(q.Collection("users"), user.ref.id), {
           data: {
@@ -42,7 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const stripeCheckoutSession = await stripe.checkout.sessions.create({
-      customer: stripeCustomer.id,
+      customer: customerId,
       payment_method_types: ["card"],
       billing_address_collection: "required",
       line_items: [{ price: "price_1MltenFrkHcGdHmpqwvhIZkH", quantity: 1 }],

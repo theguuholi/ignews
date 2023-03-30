@@ -21,8 +21,7 @@ export const authOptions = {
       const { email } = user;
 
       try {
-        console.log("here!")
-        const r = await fauna.query(
+        await fauna.query(
           q.If(
             q.Not(
               q.Exists(
@@ -33,7 +32,6 @@ export const authOptions = {
             q.Get(q.Match(q.Index("users_by_email"), q.Casefold(user.email)))
           )
         );
-        console.log(r);
 
         return true;
       } catch {
