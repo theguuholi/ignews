@@ -16,10 +16,11 @@ export function ActiveLink({
   const className = asPath === rest.href ? activeClassName : "";
 
   return (
-    <Link {...rest}>
-      {cloneElement(children, {
+    <Link {...rest} className={className}>
+      {/* {cloneElement(children, {
         className,
-      })}
+      })} */}
+      {children}
     </Link>
   );
 }
