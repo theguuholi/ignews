@@ -26,7 +26,6 @@ export const authOptions = {
 
       if (user.data.stripe_customer_id) {
         try {
-          console.log(user, "her!!");
           const userActiveSubscription = await fauna.query(
             q.Get(
               q.Intersection([
@@ -49,8 +48,6 @@ export const authOptions = {
               ])
             )
           );
-
-          console.log(userActiveSubscription);
 
           return {
             ...session,
