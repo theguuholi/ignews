@@ -911,7 +911,14 @@
     tslib "^2.3.1"
     uuid "^8.3.2"
 
-"@prismicio/client@^6.6", "@prismicio/client@^6.7.3":
+"@prismicio/client@^4":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/client/-/client-4.0.0.tgz#45e5e8651b72b747ce4e21db04eae0b96139615a"
+  integrity sha512-3rGie+Banm61hOQcKF75+TI8oquVDT2PyX05ho2eRKdiMu0i4raHVJCuIAGBs/CDCuVXes2h/rnfRs+eKfq7XQ==
+  dependencies:
+    cross-fetch "^3.0.6"
+
+"@prismicio/client@^6.6":
   version "6.7.3"
   resolved "https://registry.yarnpkg.com/@prismicio/client/-/client-6.7.3.tgz#a9744f523507334de86c6bad98417b3dd4f4b6d2"
   integrity sha512-zQVZhuQDYIgdaY636u+QNk2tvvbtpkaKsEiLT0Ef51nFW/y5fqpOG5U0eU3cVsikZaYNlZ17x6O1wmvVCLdimQ==
@@ -3265,7 +3272,7 @@ crelt@^1.0.0:
   resolved "https://registry.yarnpkg.com/crelt/-/crelt-1.0.5.tgz#57c0d52af8c859e354bace1883eb2e1eb182bb94"
   integrity sha512-+BO9wPPi+DWTDcNYhr/W90myha8ptzftZT+LwcmUbbok0rcP/fequmFYCw8NMoH7pkAZQzU78b3kYrlua5a9eA==
 
-cross-fetch@3.1.5, cross-fetch@^3.1.5:
+cross-fetch@3.1.5, cross-fetch@^3.0.6, cross-fetch@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
   integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
