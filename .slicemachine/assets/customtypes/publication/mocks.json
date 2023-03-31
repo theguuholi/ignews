@@ -1,0 +1,22 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "but"
+  },
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "crowd",
+    "type": "Text"
+  },
+  "content": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Voluptate exercitation aute amet dolore non anim occaecat commodo laborum. Velit voluptate aliqua quis culpa ipsum pariatur mollit labore esse."
+        }
+      }
+    ]
+  }
+}
