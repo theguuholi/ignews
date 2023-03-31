@@ -17,11 +17,63 @@ export const authOptions = {
   },
   secret: process.env.SIGNIN_KEY,
   callbacks: {
+    async session({ session }) {
+      const user = await fauna.query(
+        q.Get(
+          q.Match(q.Index("users_by_email"), q.Casefold(session.user.email))
+        )
+      );
+
+      if (user.data.stripe_customer_id) {
+        try {
+          console.log(user, "her!!");
+          const userActiveSubscription = await fauna.query(
+            q.Get(
+              q.Intersection([
+                q.Match(
+                  q.Index("subscription_by_user_ref"),
+                  q.Select(
+                    "ref",
+                    q.Get(
+                      q.Match(
+                        q.Index("users_by_email"),
+                        q.Casefold(user.data.email)
+                      )
+                    )
+                  )
+                ),
+                q.Match(
+                  q.Index("subscription_by_status"),
+                  q.Casefold("active")
+                ),
+              ])
+            )
+          );
+
+          console.log(userActiveSubscription);
+
+          return {
+            ...session,
+            activeSubscription: userActiveSubscription,
+          };
+        } catch (error) {
+          return {
+            ...session,
+            activeSubscription: null,
+          };
+        }
+      } else {
+        return {
+          ...session,
+          activeSubscription: null,
+        };
+      }
+    },
     async signIn({ user, account, profile }) {
       const { email } = user;
 
       try {
-        await fauna.query(
+        const r = await fauna.query(
           q.If(
             q.Not(
               q.Exists(
