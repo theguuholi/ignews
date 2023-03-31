@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import { cloneElement, ReactElement } from "react";
 
 interface ActiveLinkProps extends LinkProps {
-  children: ReactElement;
+  // children: ReactElement;
+  children: string;
   activeClassName: string;
 }
 
