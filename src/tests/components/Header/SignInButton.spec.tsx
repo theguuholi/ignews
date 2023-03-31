@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { useSession } from "next-auth/react";
 import { mocked } from "jest-mock";
+import { SignInButton } from "@/src/componens/Header/SignInButton";
 
-import { SignInButton } from ".";
 
 jest.mock("next-auth/react");
 
