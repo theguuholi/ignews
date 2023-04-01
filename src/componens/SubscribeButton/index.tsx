@@ -6,15 +6,16 @@ import { useRouter } from "next/router";
 
 // lugares seguros getServerSideProps (SSR), getStatisProps(SSSG) API ROUTEs
 export function SubscribeButton() {
-  const session = useSession();
+  const {data: session} = useSession();
   const router = useRouter();
 
   async function handleSubscribe() {
-    if (session.status === "unauthenticated") {
+    
+    if (!session) {
       signIn("github");
       return;
     } else {
-      if (session.data.activeSubscription) {
+      if (session.activeSubscription) {
         router.push("/posts");
         return;
       } else {

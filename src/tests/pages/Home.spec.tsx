@@ -1,11 +1,17 @@
 import Home from "../../pages/index";
 import { render, screen } from "@testing-library/react";
 
-jest.mock("next/router");
-jest.mock("next-auth/react", () => {
+jest.mock("next/router", () => {
   return {
-    useSession: () => [null, false],
+    useRouter() {
+      return {
+        asPath: "/",
+      };
+    },
   };
+});
+jest.mock("next-auth/react", () => {
+  return { useSession: () => [null, false] };
 });
 
 describe("Home page", () => {
@@ -19,6 +25,6 @@ describe("Home page", () => {
       />
     );
 
-    expect(screen.getByText("for $10")).toBeInTheDocument();
+    expect(screen.getByText("for $10 month")).toBeInTheDocument();
   });
 });
