@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 
 export function Async() {
-    const [isButtonVisible, setIsButtonVisible] = useState(false);
+    const [isButtonInvisible, setIsButtonInvisible] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {}, 1000);
+    setTimeout(() => {
+      setIsButtonInvisible(true)
+    }, 1000);
   }, []);
 
   return (
     <div>
         <h1>Hello!</h1>
-        {isButtonVisible && <button>Visible</button> }
+        {!isButtonInvisible && <button>Button</button> }
     </div>
   )
 }
