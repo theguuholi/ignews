@@ -14,7 +14,8 @@ const config = {
   setupFilesAfterEnv: ["<rootDir>/src/tests/setupTests.ts"],
   testEnvironment: "jest-environment-jsdom",
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{tsx}", "!src/**/*.spec.tsx"],
+  // collectCoverageFrom: ["src/**/*.{tsx}", "!src/**/*.spec.tsx"],
+  collectCoverageFrom: ["src/**/*.tsx"],
   coverageReporters: ["clover", "json", "lcov", ["text", { skipFull: true }]],
 };
 
